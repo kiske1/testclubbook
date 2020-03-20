@@ -1,24 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+
+import "./App.css";
+import Testata from "./components/common/Testata";
+import "semantic-ui-css/semantic.min.css";
+import { Switch, Route } from "react-router-dom";
+import Book from "./components/book/Book";
+import About from "./components/About";
+import Home from "./components/home/Home";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Testata />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/book" component={Book} />
+        <Route path="/book/:slug" component={Book} />
+        <Route path="/about" component={About} />
+      </Switch>
     </div>
   );
 }
